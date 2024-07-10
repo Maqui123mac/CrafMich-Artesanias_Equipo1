@@ -1,0 +1,33 @@
+{% extends "michoacan/home.html" %} {% block titulo%}Productos {% endblock %}
+{% block contenido%}
+
+<br> <br>  
+<br> <br> 
+<h5> Contactos <h5>
+<br> <br> 
+<form
+  class="form-horizontal"  action="{% url 'Contactos' %}" method="POST" onsubmit="alert('Contacto Registrado')">
+  
+ 
+{% csrf_token %}
+    {{form}}
+  {{mensaje}}
+  <div class="panel panel-default">
+
+						
+     <br> <br> 					
+
+    
+     <div class="form-actions text-right">
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>	
+   </div>
+		
+
+</form>
+
+
+      
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "michoacan/home.html" %} {% block titulo%}Productos {% endblock %}
+
+{% block contenido%}
+<br> <br>  
+<br> <br> 
+<h5> PRODUCTOS <h5>
+<br> <br> 
+<form
+  class="form-horizontal"
+  action="{% url 'Registrar' %}"
+  method="POST"
+  enctype="multipart/form-data"
+  role="form"
+>
+  {% csrf_token %}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="col-sm-2 control-label text-right">Producto:</label>
+        <div class="col-sm-10">
+          <input type="file" name="imagen" required /><br /><br />
+          <input
+            name="producto"
+            type="text"
+            class="form-control"
+            placeholder="Nombre del producto"
+            required
+          /><br />
+          <input
+            name="precio"
+            type="number"
+            class="form-control"
+            placeholder="Precio"
+            required
+          /><br />
+          <input
+            name="descripcion"
+            type="text"
+            class="form-control"
+            placeholder="Descripción"
+            required
+          />
+        </div>
+      </div>
+      <br> <br>  
+
+      <div class="form-actions text-right">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
