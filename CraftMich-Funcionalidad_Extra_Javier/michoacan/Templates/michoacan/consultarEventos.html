@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+{% load static%}
+    <link rel="stylesheet" href="fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
+
+    <link rel="stylesheet" href="{%static 'michoacan/css/tiny-slider.css' %}" />
+    <link rel="stylesheet" href="{%static 'michoacan/css/aos.css' %}" />
+    <link rel="stylesheet" href="{%static 'michoacan/css/style.css' %}" />
+
+	
+	{% block contenido%}
+
+    <title>
+        Ver Eventos
+      </title>
+    </head>
+    <body>
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close">
+            <span class="icofont-close js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+  
+      <nav class="site-nav">
+        <div class="container">
+          <div class="menu-bg-wrap">
+            <div class="site-navigation">
+              <a href="index.html" class="logo m-0 float-start">Craft Mich.</a>
+  
+              <ul
+                class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
+              >
+              <li class="active"><a href="{%url 'Carrusel'%}">Inicio</a></li>
+              <li><a href="{%url 'Contactos'%}">Contactanos</a></li>
+              <li class="has-children">
+                <a href="{%url 'ca'%}">Eventos</a>
+              
+                <li class="active"><a href="{% url 'CrearEvento' %}">Agregar Evento</a></li> 
+              </ul>
+                
+
+
+             
+  
+              <a
+                href="#"
+                class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+                data-toggle="collapse"
+                data-target="#main-navbar"
+              >
+                <span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+  
+      <div
+        class="hero page-inner overlay"
+        style="background-image: url('')"
+      >
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-9 text-center mt-5">
+              <h1 class="heading" data-aos="fade-up">Ver Evento</h1>
+  
+              <nav
+                aria-label="breadcrumb"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <ol class="breadcrumb text-center justify-content-center">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li
+                    class="breadcrumb-item active text-white-50"
+                    aria-current="page"
+                  >
+                    Ver Eventos
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Nombre del Evento</th>
+						<th>Fecha del Evento</th>
+						<th>Hora del Evento</th>
+                        <th>Lugar del Evento</th>
+                        <th>Tipo de Evento</th>
+                        <th>Descripcion del Evento</th>
+                        <th>Editar Evento</th>
+                        <th>Eliminar Evento</th>
+					</tr>
+				</thead>
+			  <tbody>
+				{% for evento in evento %}
+				<tr>
+					<td class="muted">{{evento.nombre}}</td>
+					<td class="muted">{{evento.fecha}}</td>
+                    <td class="muted">{{evento.hora}}</td>
+					<td class="muted">{{evento.lugar}}</td>
+                    <td class="muted">{{evento.tipo}}</td>
+					<td class="muted">{{evento.descripcion}}</td>
+					<td class="text-center">
+            <a href="{% url 'ConsultaIndividual' evento.id%}">Editar</a>
+           </td>
+					<td class="text-center">
+						<a href="{% url 'Eliminar' evento.id %}">Eliminar</a>
+					</td>
+				</tr>
+				{% endfor%}
+			 </tbody>
+			</table><br>
+
+
+{% endblock %}
+
+<script src="{%static 'michoacan/js/bootstrap.bundle.min.js'  %}"></script>
+<script src="{%static 'michoacan/js/tiny-slider.js' %}"></script>
+<script src="{%static 'michoacan/js/aos.js' %}"></script>
+<script src="{%static 'michoacan/js/navbar.js' %}"></script>
+<script src="{%static 'michoacan/js/counter.js' %}"></script>
+<script src="{%static 'michoacan/js/custom.js' %}"></script>
