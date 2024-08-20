@@ -4,7 +4,7 @@ from django.db import models
 
 class Articulos(models.Model):
     id = models.AutoField(primary_key=True,verbose_name="Clave")
-    imagen = models.ImageField(null=True,upload_to="fotos",verbose_name="Fotografía")
+    imagen = models.ImageField(null=True,upload_to="fotos",verbose_name="Fotografía",default='fotos' ) 
     categoria = models.TextField(default='artesania')
     producto = models.TextField(default='producto')
     ubicacion = models.TextField(default='ubicacion')
