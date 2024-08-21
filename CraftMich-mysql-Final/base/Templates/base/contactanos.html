@@ -1,63 +1,67 @@
 {% extends "michoacan/home.html" %} {% block titulo%}Productos {% endblock %}
 {% block contenido%}
-<br>
+<br> <br>
 
 <h1 align="center"> Contactanos<h1>
+  
 <div class="section" align="center">
+
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200"> 
+        <br> 
+
         <form action="{% url 'Contactos' %}"  method="POST" onsubmit="alert('Contacto Registrado')" enctype="multipart/form-data">
           {% csrf_token %}
-          <div class="row">
-            <div class="col-6 mb-3">
-              <input
-                type="text"
-                class="form-control"
-                name="nombre"
-                placeholder="Nombre"
-                required
-              />
-            </div>
-            <div class="col-6 mb-3">
-              <input
-                type="email"
-                class="form-control"
-                name="tipo"
-                placeholder="Correo"
-                required
-              />
-            </div>
-            <div class="col-12 mb-3">
-              <textarea
-                cols="30"
-                rows="7"
-                type="text"
-                class="form-control"
-                name="descripcion"
-                placeholder="Mensaje"
-                required
-              ></textarea>
-            </div>
+          {{form}}
+          {{mensaje}}
+          <br>
+          <center>
 
-            <div class="col-12">
-              <input
-                type="submit"
-                value="Enviar"
-                class="btn btn-primary"
-              />
-            </div>
-          </div>
+          <div class="col-12">
+            <input
+              type="submit"
+              value="Enviar"
+              class="btn btn-primary"
+            />
+          </div></center>
+          
+  <style>
+  form {
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px;
+  border: 0px solid #cccccc;
+  
+}
+
+
+textarea {
+  width: 105%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border: .6px solid #3b3b3b;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #053224;
+  color: white;
+  padding: 30px 50px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+ align-items: left;
+}
+          </style>
         </form>
       </div>
     </div>
   </div>
 </div>
-		
 
 </form>
-
-
-      
-
 {% endblock %}
