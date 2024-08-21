@@ -21,10 +21,14 @@ from django.conf import settings
 from base import views as views_base
 from django.conf.urls.static import static
 from michoacan import views as views_mich
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ca/', views.ca, name="ca"),
+    
+    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+
     path('producto/',views_base.producto,name="Producto"),
     path('eliminarCarrusel/<int:id>/',views_base.eliminarCarrusel, name='Eliminarcarrusel'),
     path('editarCarrusel/<int:id>/',views_base.editarCarrusel, name='Editarcarrusel'),

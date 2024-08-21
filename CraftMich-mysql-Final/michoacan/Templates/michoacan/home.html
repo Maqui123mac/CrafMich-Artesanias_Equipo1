@@ -51,12 +51,15 @@
               class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
             >
               <li class="active"><a href="{%url 'Carrusel'%}">Inicio</a></li>
-              <li class="active"><a href="{%url 'Producto'%}">Producto</a></li>
               <li><a href="{%url 'Quienessomos'%}">Quienes somos</a></li>
               <li><a href="{%url 'Contactos'%}">Contactanos</a></li>
 
+
+             
+              
               <li class="has-children">
                 <a href="{%url 'eventos'%}">Eventos</a>
+                {%if user.is_authenticated%}
                 <ul class="dropdown">
                   <li><a href="{%url 'CrearEvento'%}">Crear Evento</a></li>
                   <li>
@@ -66,7 +69,12 @@
                   <li class="has-children"></li>
                 </ul>
               </li>
+              <li><a href="#">{% block contenido2 %} {% endblock %}</a></li>
+
             </ul>
+            {% endif %}
+
+            
 
             <a
               href="#"

@@ -50,7 +50,13 @@
             class="btn btn-primary text-white py-3 px-4"
             >Agregar Producto</a
           >
+          <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger text-white py-3 px-4">Cerrar Sesión</button>
+          </form>
           {% endif %}
+          
+
 
         </p>
         </p>
@@ -136,3 +142,13 @@
 </div>
   {% endblock %}
 </div>
+
+
+
+
+{% block contenido2 %} 
+{%if user.is_authenticated%}
+{{ user.username }}
+
+{% endif %} 
+{%endblock%}

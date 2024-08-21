@@ -75,6 +75,8 @@ def registro(request):
         form = LoginForm()
     return render(request, 'base/registro.html', {'form': form})
 
+
+
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -84,8 +86,10 @@ def login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect('bienvenida') 
-            HttpResponse('Ir a home')# Redirige a la página deseada después del login
+                articulos = Articulos.objects.all()
+                return render(request, 'base/Carrusel.html', {'articulos': articulos})  # Redirige a 'base/Carrusel.html' después del login
+            else:
+                return HttpResponse('Credenciales inválidas, por favor intente de nuevo.')
                 
     else:
         form = AuthenticationForm()
